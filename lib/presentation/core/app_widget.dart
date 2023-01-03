@@ -31,6 +31,8 @@ class AppWidget extends StatelessWidget {
             appBarTheme: const AppBarTheme(
               backgroundColor: Colors.teal,
             ),
+            floatingActionButtonTheme: FloatingActionButtonThemeData(
+                backgroundColor: Colors.teal.shade500),
             inputDecorationTheme: InputDecorationTheme(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
