@@ -1,5 +1,5 @@
-import 'package:dddtodoapp/application/auth/auth_bloc.dart';
-import 'package:dddtodoapp/injection.dart';
+import '../../application/auth/auth_bloc.dart';
+import '../../injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

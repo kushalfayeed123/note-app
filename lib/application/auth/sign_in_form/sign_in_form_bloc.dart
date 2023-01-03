@@ -35,18 +35,21 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
       }, registerWithEmailAndPasswordPressed: (e) async {
         await _performActionOnAuthFacadeWithEmailAndPassword(
             emit, _authFacade.registerWithEmailandPassword);
+
         return state;
       }, signInWithEmailAndPasswordPressed: (e) async {
         await _performActionOnAuthFacadeWithEmailAndPassword(
             emit, _authFacade.signInWithEmailandPassword);
+
         return state;
       }, signInWithGooglePressed: (e) async {
         emit(state.copyWith(
             isSubmitting: true, authFailureOrSuccessOption: none()));
         final failureOrSuccess = await _authFacade.signInWithGoogle();
         emit(state.copyWith(
-            isSubmitting: true,
+            isSubmitting: false,
             authFailureOrSuccessOption: some(failureOrSuccess)));
+
         return state;
       }));
     });
@@ -71,9 +74,10 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
     }
 
     emit(state.copyWith(
-      showErrorMessages: AutovalidateMode.always,
-      authFailureOrSuccessOption: optionOf(failureOrSuccess),
-    ));
+        showErrorMessages: AutovalidateMode.always,
+        authFailureOrSuccessOption: optionOf(failureOrSuccess),
+        isSubmitting: false));
+
     return state;
   }
 }

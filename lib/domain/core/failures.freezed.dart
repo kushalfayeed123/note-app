@@ -19,39 +19,39 @@ mixin _$ValueFailure<T> {
   T? get failedValue => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T? failedValue) invalidEmail,
-    required TResult Function(T? failedValue) shortPassword,
+    required TResult Function(T? failedValue) auth,
+    required TResult Function(T? failedValue, int? maxLength) notes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(T? failedValue)? invalidEmail,
-    TResult? Function(T? failedValue)? shortPassword,
+    TResult? Function(T? failedValue)? auth,
+    TResult? Function(T? failedValue, int? maxLength)? notes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T? failedValue)? invalidEmail,
-    TResult Function(T? failedValue)? shortPassword,
+    TResult Function(T? failedValue)? auth,
+    TResult Function(T? failedValue, int? maxLength)? notes,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InValidEmail<T> value) invalidEmail,
-    required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(_Auth<T> value) auth,
+    required TResult Function(_Notes<T> value) notes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InValidEmail<T> value)? invalidEmail,
-    TResult? Function(ShortPassword<T> value)? shortPassword,
+    TResult? Function(_Auth<T> value)? auth,
+    TResult? Function(_Notes<T> value)? notes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InValidEmail<T> value)? invalidEmail,
-    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(_Auth<T> value)? auth,
+    TResult Function(_Notes<T> value)? notes,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -95,22 +95,20 @@ class _$ValueFailureCopyWithImpl<T, $Res, $Val extends ValueFailure<T>>
 }
 
 /// @nodoc
-abstract class _$$InValidEmailCopyWith<T, $Res>
+abstract class _$$_AuthCopyWith<T, $Res>
     implements $ValueFailureCopyWith<T, $Res> {
-  factory _$$InValidEmailCopyWith(
-          _$InValidEmail<T> value, $Res Function(_$InValidEmail<T>) then) =
-      __$$InValidEmailCopyWithImpl<T, $Res>;
+  factory _$$_AuthCopyWith(_$_Auth<T> value, $Res Function(_$_Auth<T>) then) =
+      __$$_AuthCopyWithImpl<T, $Res>;
   @override
   @useResult
   $Res call({T? failedValue});
 }
 
 /// @nodoc
-class __$$InValidEmailCopyWithImpl<T, $Res>
-    extends _$ValueFailureCopyWithImpl<T, $Res, _$InValidEmail<T>>
-    implements _$$InValidEmailCopyWith<T, $Res> {
-  __$$InValidEmailCopyWithImpl(
-      _$InValidEmail<T> _value, $Res Function(_$InValidEmail<T>) _then)
+class __$$_AuthCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res, _$_Auth<T>>
+    implements _$$_AuthCopyWith<T, $Res> {
+  __$$_AuthCopyWithImpl(_$_Auth<T> _value, $Res Function(_$_Auth<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -118,7 +116,7 @@ class __$$InValidEmailCopyWithImpl<T, $Res>
   $Res call({
     Object? failedValue = freezed,
   }) {
-    return _then(_$InValidEmail<T>(
+    return _then(_$_Auth<T>(
       failedValue: freezed == failedValue
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
@@ -129,22 +127,22 @@ class __$$InValidEmailCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$InValidEmail<T> implements InValidEmail<T> {
-  _$InValidEmail({required this.failedValue});
+class _$_Auth<T> implements _Auth<T> {
+  _$_Auth({required this.failedValue});
 
   @override
   final T? failedValue;
 
   @override
   String toString() {
-    return 'ValueFailure<$T>.invalidEmail(failedValue: $failedValue)';
+    return 'ValueFailure<$T>.auth(failedValue: $failedValue)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InValidEmail<T> &&
+            other is _$_Auth<T> &&
             const DeepCollectionEquality()
                 .equals(other.failedValue, failedValue));
   }
@@ -156,36 +154,36 @@ class _$InValidEmail<T> implements InValidEmail<T> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$InValidEmailCopyWith<T, _$InValidEmail<T>> get copyWith =>
-      __$$InValidEmailCopyWithImpl<T, _$InValidEmail<T>>(this, _$identity);
+  _$$_AuthCopyWith<T, _$_Auth<T>> get copyWith =>
+      __$$_AuthCopyWithImpl<T, _$_Auth<T>>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T? failedValue) invalidEmail,
-    required TResult Function(T? failedValue) shortPassword,
+    required TResult Function(T? failedValue) auth,
+    required TResult Function(T? failedValue, int? maxLength) notes,
   }) {
-    return invalidEmail(failedValue);
+    return auth(failedValue);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(T? failedValue)? invalidEmail,
-    TResult? Function(T? failedValue)? shortPassword,
+    TResult? Function(T? failedValue)? auth,
+    TResult? Function(T? failedValue, int? maxLength)? notes,
   }) {
-    return invalidEmail?.call(failedValue);
+    return auth?.call(failedValue);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T? failedValue)? invalidEmail,
-    TResult Function(T? failedValue)? shortPassword,
+    TResult Function(T? failedValue)? auth,
+    TResult Function(T? failedValue, int? maxLength)? notes,
     required TResult orElse(),
   }) {
-    if (invalidEmail != null) {
-      return invalidEmail(failedValue);
+    if (auth != null) {
+      return auth(failedValue);
     }
     return orElse();
   }
@@ -193,138 +191,146 @@ class _$InValidEmail<T> implements InValidEmail<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InValidEmail<T> value) invalidEmail,
-    required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(_Auth<T> value) auth,
+    required TResult Function(_Notes<T> value) notes,
   }) {
-    return invalidEmail(this);
+    return auth(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InValidEmail<T> value)? invalidEmail,
-    TResult? Function(ShortPassword<T> value)? shortPassword,
+    TResult? Function(_Auth<T> value)? auth,
+    TResult? Function(_Notes<T> value)? notes,
   }) {
-    return invalidEmail?.call(this);
+    return auth?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InValidEmail<T> value)? invalidEmail,
-    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(_Auth<T> value)? auth,
+    TResult Function(_Notes<T> value)? notes,
     required TResult orElse(),
   }) {
-    if (invalidEmail != null) {
-      return invalidEmail(this);
+    if (auth != null) {
+      return auth(this);
     }
     return orElse();
   }
 }
 
-abstract class InValidEmail<T> implements ValueFailure<T> {
-  factory InValidEmail({required final T? failedValue}) = _$InValidEmail<T>;
+abstract class _Auth<T> implements ValueFailure<T> {
+  factory _Auth({required final T? failedValue}) = _$_Auth<T>;
 
   @override
   T? get failedValue;
   @override
   @JsonKey(ignore: true)
-  _$$InValidEmailCopyWith<T, _$InValidEmail<T>> get copyWith =>
+  _$$_AuthCopyWith<T, _$_Auth<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ShortPasswordCopyWith<T, $Res>
+abstract class _$$_NotesCopyWith<T, $Res>
     implements $ValueFailureCopyWith<T, $Res> {
-  factory _$$ShortPasswordCopyWith(
-          _$ShortPassword<T> value, $Res Function(_$ShortPassword<T>) then) =
-      __$$ShortPasswordCopyWithImpl<T, $Res>;
+  factory _$$_NotesCopyWith(
+          _$_Notes<T> value, $Res Function(_$_Notes<T>) then) =
+      __$$_NotesCopyWithImpl<T, $Res>;
   @override
   @useResult
-  $Res call({T? failedValue});
+  $Res call({T? failedValue, int? maxLength});
 }
 
 /// @nodoc
-class __$$ShortPasswordCopyWithImpl<T, $Res>
-    extends _$ValueFailureCopyWithImpl<T, $Res, _$ShortPassword<T>>
-    implements _$$ShortPasswordCopyWith<T, $Res> {
-  __$$ShortPasswordCopyWithImpl(
-      _$ShortPassword<T> _value, $Res Function(_$ShortPassword<T>) _then)
+class __$$_NotesCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res, _$_Notes<T>>
+    implements _$$_NotesCopyWith<T, $Res> {
+  __$$_NotesCopyWithImpl(_$_Notes<T> _value, $Res Function(_$_Notes<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? failedValue = freezed,
+    Object? maxLength = freezed,
   }) {
-    return _then(_$ShortPassword<T>(
+    return _then(_$_Notes<T>(
       failedValue: freezed == failedValue
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
               as T?,
+      maxLength: freezed == maxLength
+          ? _value.maxLength
+          : maxLength // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$ShortPassword<T> implements ShortPassword<T> {
-  _$ShortPassword({required this.failedValue});
+class _$_Notes<T> implements _Notes<T> {
+  _$_Notes({required this.failedValue, this.maxLength});
 
   @override
   final T? failedValue;
+  @override
+  final int? maxLength;
 
   @override
   String toString() {
-    return 'ValueFailure<$T>.shortPassword(failedValue: $failedValue)';
+    return 'ValueFailure<$T>.notes(failedValue: $failedValue, maxLength: $maxLength)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ShortPassword<T> &&
+            other is _$_Notes<T> &&
             const DeepCollectionEquality()
-                .equals(other.failedValue, failedValue));
+                .equals(other.failedValue, failedValue) &&
+            (identical(other.maxLength, maxLength) ||
+                other.maxLength == maxLength));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(failedValue));
+      runtimeType, const DeepCollectionEquality().hash(failedValue), maxLength);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ShortPasswordCopyWith<T, _$ShortPassword<T>> get copyWith =>
-      __$$ShortPasswordCopyWithImpl<T, _$ShortPassword<T>>(this, _$identity);
+  _$$_NotesCopyWith<T, _$_Notes<T>> get copyWith =>
+      __$$_NotesCopyWithImpl<T, _$_Notes<T>>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T? failedValue) invalidEmail,
-    required TResult Function(T? failedValue) shortPassword,
+    required TResult Function(T? failedValue) auth,
+    required TResult Function(T? failedValue, int? maxLength) notes,
   }) {
-    return shortPassword(failedValue);
+    return notes(failedValue, maxLength);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(T? failedValue)? invalidEmail,
-    TResult? Function(T? failedValue)? shortPassword,
+    TResult? Function(T? failedValue)? auth,
+    TResult? Function(T? failedValue, int? maxLength)? notes,
   }) {
-    return shortPassword?.call(failedValue);
+    return notes?.call(failedValue, maxLength);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T? failedValue)? invalidEmail,
-    TResult Function(T? failedValue)? shortPassword,
+    TResult Function(T? failedValue)? auth,
+    TResult Function(T? failedValue, int? maxLength)? notes,
     required TResult orElse(),
   }) {
-    if (shortPassword != null) {
-      return shortPassword(failedValue);
+    if (notes != null) {
+      return notes(failedValue, maxLength);
     }
     return orElse();
   }
@@ -332,42 +338,44 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InValidEmail<T> value) invalidEmail,
-    required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(_Auth<T> value) auth,
+    required TResult Function(_Notes<T> value) notes,
   }) {
-    return shortPassword(this);
+    return notes(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InValidEmail<T> value)? invalidEmail,
-    TResult? Function(ShortPassword<T> value)? shortPassword,
+    TResult? Function(_Auth<T> value)? auth,
+    TResult? Function(_Notes<T> value)? notes,
   }) {
-    return shortPassword?.call(this);
+    return notes?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InValidEmail<T> value)? invalidEmail,
-    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(_Auth<T> value)? auth,
+    TResult Function(_Notes<T> value)? notes,
     required TResult orElse(),
   }) {
-    if (shortPassword != null) {
-      return shortPassword(this);
+    if (notes != null) {
+      return notes(this);
     }
     return orElse();
   }
 }
 
-abstract class ShortPassword<T> implements ValueFailure<T> {
-  factory ShortPassword({required final T? failedValue}) = _$ShortPassword<T>;
+abstract class _Notes<T> implements ValueFailure<T> {
+  factory _Notes({required final T? failedValue, final int? maxLength}) =
+      _$_Notes<T>;
 
   @override
   T? get failedValue;
+  int? get maxLength;
   @override
   @JsonKey(ignore: true)
-  _$$ShortPasswordCopyWith<T, _$ShortPassword<T>> get copyWith =>
+  _$$_NotesCopyWith<T, _$_Notes<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

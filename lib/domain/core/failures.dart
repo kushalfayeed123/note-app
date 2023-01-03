@@ -3,10 +3,11 @@ part 'failures.freezed.dart';
 
 @freezed
 class ValueFailure<T> with _$ValueFailure<T> {
-  factory ValueFailure.invalidEmail({
+  factory ValueFailure.auth({
     required T? failedValue,
-  }) = InValidEmail<T>;
-  factory ValueFailure.shortPassword({
+  }) = _Auth<T>;
+  factory ValueFailure.notes({
     required T? failedValue,
-  }) = ShortPassword<T>;
+    int? maxLength,
+  }) = _Notes<T>;
 }

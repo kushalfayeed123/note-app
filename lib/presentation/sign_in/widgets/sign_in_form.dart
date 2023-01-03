@@ -1,5 +1,5 @@
 import 'package:another_flushbar/flushbar_helper.dart';
-import 'package:dddtodoapp/application/auth/sign_in_form/sign_in_form_bloc.dart';
+import '../../../application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -56,7 +56,7 @@ class SignInForm extends StatelessWidget {
                       .value
                       .fold(
                         (f) => f.maybeMap(
-                          invalidEmail: (_) => 'Invalid Email',
+                          auth: (_) => 'Invalid Email',
                           orElse: () => null,
                         ),
                         (_) => null,
@@ -76,7 +76,7 @@ class SignInForm extends StatelessWidget {
                   validator: (_) =>
                       context.read<SignInFormBloc>().state.password.value.fold(
                             (f) => f.maybeMap(
-                              shortPassword: (_) => 'Short Password',
+                              auth: (_) => 'Short Password',
                               orElse: () => null,
                             ),
                             (_) => null,
@@ -94,6 +94,7 @@ class SignInForm extends StatelessWidget {
                               context.read<SignInFormBloc>().add(
                                   const SignInFormEvent
                                       .signInWithEmailAndPasswordPressed());
+                              FocusScope.of(context).requestFocus(FocusNode());
                             },
                             child: const Text('SIGN IN'))),
                     const SizedBox(
@@ -105,6 +106,7 @@ class SignInForm extends StatelessWidget {
                               context.read<SignInFormBloc>().add(
                                   const SignInFormEvent
                                       .registerWithEmailAndPasswordPressed());
+                              FocusScope.of(context).requestFocus(FocusNode());
                             },
                             child: const Text('REGISTER')))
                   ],
@@ -113,12 +115,21 @@ class SignInForm extends StatelessWidget {
                   height: 20,
                 ),
                 ElevatedButton(
-                    onPressed: () {
-                      context
-                          .read<SignInFormBloc>()
-                          .add(const SignInFormEvent.signInWithGooglePressed());
-                    },
-                    child: const Text('SIGN IN WITH GOOGLE'))
+                  onPressed: () {
+                    context
+                        .read<SignInFormBloc>()
+                        .add(const SignInFormEvent.signInWithGooglePressed());
+                  },
+                  child: const Text('SIGN IN WITH GOOGLE'),
+                ),
+                if (state.isSubmitting) ...[
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  const LinearProgressIndicator(
+                    value: null,
+                  ),
+                ]
               ],
             ),
           ),

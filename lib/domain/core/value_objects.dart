@@ -18,6 +18,10 @@ abstract class ValueObject<T> {
 
   bool isValid() => value.isRight();
 
+  Either<ValueFailure<dynamic>, Unit> get failureOrUnit {
+    return value.fold((f) => left(f), (r) => right(unit));
+  }
+
   @override
   bool operator ==(covariant ValueObject other) {
     if (identical(this, other)) return true;
@@ -36,7 +40,7 @@ class UniqueId extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
 
-  factory UniqueId(String input) {
+  factory UniqueId() {
     return UniqueId._(right(const Uuid().v4()));
   }
 
