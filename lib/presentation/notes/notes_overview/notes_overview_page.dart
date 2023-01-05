@@ -16,7 +16,7 @@ class NotesOverviewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<NoteWatcherBloc>(
+        BlocProvider(
           create: (context) => getIt<NoteWatcherBloc>()
             ..add(
               const NoteWatcherEvent.watchAllStarted(),
@@ -28,27 +28,31 @@ class NotesOverviewPage extends StatelessWidget {
       ],
       child: MultiBlocListener(
         listeners: [
-          // BlocListener<AuthBloc, AuthState>(listener: (context, state) {
-          //   state.maybeMap(
-          //       unAuthenticated: (_) => context.navigateTo(const SigninRoute()),
-          //       orElse: () {});
-          // }),
+          BlocListener<AuthBloc, AuthState>(
+            listener: (context, state) {
+              state.maybeMap(
+                  unAuthenticated: (_) =>
+                      context.navigateTo(const SigninRoute()),
+                  orElse: () {});
+            },
+          ),
           BlocListener<NoteActorBloc, NoteActorState>(
-              listener: (context, state) {
-            state.maybeMap(
-                deleteFailure: (state) {
-                  FlushbarHelper.createError(
-                      duration: const Duration(seconds: 5),
-                      message: state.noteFailure.map(
-                        unexpected: (_) =>
-                            'Unexpected error occurred while deleting, please contact support',
-                        insufficientPermission: (_) =>
-                            'Insufficient Permissions',
-                        unableToUpdate: (_) => 'Impossible error',
-                      )).show(context);
-                },
-                orElse: () {});
-          })
+            listener: (context, state) {
+              state.maybeMap(
+                  deleteFailure: (state) {
+                    FlushbarHelper.createError(
+                        duration: const Duration(seconds: 5),
+                        message: state.noteFailure.map(
+                          unexpected: (_) =>
+                              'Unexpected error occurred while deleting, please contact support',
+                          insufficientPermission: (_) =>
+                              'Insufficient Permissions',
+                          unableToUpdate: (_) => 'Impossible error',
+                        )).show(context);
+                  },
+                  orElse: () {});
+            },
+          )
         ],
         child: Scaffold(
           appBar: AppBar(
