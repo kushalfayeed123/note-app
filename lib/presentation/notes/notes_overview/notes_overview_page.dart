@@ -1,4 +1,6 @@
 import 'package:another_flushbar/flushbar_helper.dart';
+import 'package:dddtodoapp/presentation/notes/notes_overview/widgets/notes_overview_body_widget.dart';
+import 'package:dddtodoapp/presentation/notes/notes_overview/widgets/uncompleted_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:auto_route/auto_route.dart';
@@ -64,14 +66,13 @@ class NotesOverviewPage extends StatelessWidget {
                       );
                 },
                 icon: const Icon(Icons.exit_to_app)),
-            actions: <Widget>[
-              IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.indeterminate_check_box))
-            ],
+            actions: const <Widget>[UncompletedSwitch()],
           ),
+          body: const NotesOverviewBody(),
           floatingActionButton: FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              context.navigateTo(NoteFormRoute(editedNote: null));
+            },
             child: const Icon(
               Icons.add,
               color: Colors.white,

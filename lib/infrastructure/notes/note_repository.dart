@@ -23,7 +23,7 @@ class NoteRepository implements INoteRepository {
     yield* userDoc.noteCollection
         .orderBy('serverTimeStamp', descending: true)
         .snapshots()
-        .map(
+        .asyncMap(
           (snapshot) => right<NoteFailure, KtList<Note>>(
             snapshot.docs
                 .map((doc) => NoteDto.fromFirestore(doc).toDomain())
@@ -31,9 +31,8 @@ class NoteRepository implements INoteRepository {
           ),
         )
         .onErrorReturnWith((e, st) {
-      if (e is PlatformException &&
-          (e.message ?? '').contains('PERMISSION_DENIED')) {
-        return left(const NoteFailure.insufficientPermission());
+      if (e is FirebaseException && e.code == 'permission-denied') {
+        return left(const NoteFailure.unexpected());
       } else {
         //todo log.error(e.toString())
         return left(const NoteFailure.unexpected());

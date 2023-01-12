@@ -19,7 +19,7 @@ abstract class ValueObject<T> {
   bool isValid() => value.isRight();
 
   Either<ValueFailure<dynamic>, Unit> get failureOrUnit {
-    return value.fold((f) => left(f), (r) => right(unit));
+    return value.fold((f) => Left(f), (r) => const Right(unit));
   }
 
   @override
