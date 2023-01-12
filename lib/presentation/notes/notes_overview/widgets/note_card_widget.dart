@@ -78,8 +78,10 @@ class NoteCard extends StatelessWidget {
                   ),
                 ),
                 TextButton(
-                  onPressed: () =>
-                      noteActorBloc.add(NoteActorEvent.deleted(note)),
+                  onPressed: () {
+                    noteActorBloc.add(NoteActorEvent.deleted(note));
+                    Navigator.pop(context);
+                  },
                   child: Text(
                     'DELETE',
                     style: TextStyle(color: Colors.teal.shade400),

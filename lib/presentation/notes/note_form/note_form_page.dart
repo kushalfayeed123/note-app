@@ -2,6 +2,7 @@ import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dddtodoapp/presentation/notes/note_form/widgets/body_field_widget.dart';
+import 'package:dddtodoapp/presentation/notes/note_form/widgets/color_field_widget.dart';
 import 'package:dddtodoapp/presentation/routes/router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -129,11 +130,15 @@ class NoteFormPageScaffold extends StatelessWidget {
         buildWhen: (p, c) => p.showErrorMessages != c.showErrorMessages,
         builder: (context, state) {
           return Form(
+              autovalidateMode: state.showErrorMessages,
               child: SingleChildScrollView(
-            child: Column(
-              children: const [BodyField()],
-            ),
-          ));
+                child: Column(
+                  children: const [
+                    BodyField(),
+                    ColorField(),
+                  ],
+                ),
+              ));
         },
       ),
     );

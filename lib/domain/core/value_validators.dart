@@ -8,9 +8,9 @@ Either<ValueFailure<String>, String> validateMaxStringLength(
     return right(input);
   } else {
     return left(
-      ValueFailure.notes(
+      ValueFailure.exceedingLength(
         failedValue: input,
-        maxLength: maxLength,
+        max: maxLength,
       ),
     );
   }
@@ -20,7 +20,7 @@ Either<ValueFailure<String>, String> validateStringNotEmpty(String input) {
   if (input.isNotEmpty) {
     return right(input);
   } else {
-    return left(ValueFailure.notes(
+    return left(ValueFailure.empty(
       failedValue: input,
     ));
   }
@@ -31,7 +31,7 @@ Either<ValueFailure<String>, String> validateSingleLine(String input) {
     return right(input);
   } else {
     return left(
-      ValueFailure.notes(failedValue: input),
+      ValueFailure.multiline(failedValue: input),
     );
   }
 }
@@ -42,9 +42,9 @@ Either<ValueFailure<KtList<T>>, KtList<T>> validateMaxListLength<T>(
     return right(input);
   } else {
     return left(
-      ValueFailure.notes(
+      ValueFailure.listTooLong(
         failedValue: input,
-        maxLength: maxLength,
+        max: maxLength,
       ),
     );
   }
@@ -57,7 +57,7 @@ Either<ValueFailure<String>, String> validateEmailAddress(String input) {
     return right(input);
   } else {
     return left(
-      ValueFailure.auth(
+      ValueFailure.invalidEmail(
         failedValue: input,
       ),
     );
@@ -69,7 +69,7 @@ Either<ValueFailure<String>, String> validatePassword(String input) {
     return right(input);
   } else {
     return left(
-      ValueFailure.auth(
+      ValueFailure.shortPassword(
         failedValue: input,
       ),
     );

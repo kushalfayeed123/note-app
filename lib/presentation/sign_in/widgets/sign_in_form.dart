@@ -65,7 +65,7 @@ class SignInForm extends StatelessWidget {
                       .value
                       .fold(
                         (f) => f.maybeMap(
-                          auth: (_) => 'Invalid Email',
+                          invalidEmail: (_) => 'Invalid Email',
                           orElse: () => null,
                         ),
                         (_) => null,
@@ -85,7 +85,7 @@ class SignInForm extends StatelessWidget {
                   validator: (_) =>
                       context.read<SignInFormBloc>().state.password.value.fold(
                             (f) => f.maybeMap(
-                              auth: (_) => 'Short Password',
+                              shortPassword: (_) => 'Short Password',
                               orElse: () => null,
                             ),
                             (_) => null,
