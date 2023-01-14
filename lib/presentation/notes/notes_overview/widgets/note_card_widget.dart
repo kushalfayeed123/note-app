@@ -36,7 +36,7 @@ class NoteCard extends StatelessWidget {
               ),
               if (note.todos.length > 0) ...[
                 const SizedBox(
-                  height: 4,
+                  height: 10,
                 ),
                 Wrap(
                   spacing: 8,
@@ -104,12 +104,12 @@ class TodoDisplay extends StatelessWidget {
         if (todo.done)
           const Icon(
             Icons.check_box,
-            color: Colors.white,
+            color: Colors.teal,
           ),
         if (!todo.done)
-          Icon(
+          const Icon(
             Icons.check_box_outline_blank,
-            color: Theme.of(context).disabledColor,
+            color: Colors.teal,
           ),
         Text(todo.name.getOrCrash())
       ],

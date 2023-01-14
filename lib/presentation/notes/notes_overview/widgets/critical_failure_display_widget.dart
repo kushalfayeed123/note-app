@@ -23,7 +23,7 @@ class CriticalFailureDisplay extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           TextButton(
-              onPressed: () => print('Sending email...'),
+              onPressed: () {},
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [

@@ -13,6 +13,7 @@ class AppWidget extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final themeData = ThemeData.dark();
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -25,12 +26,18 @@ class AppWidget extends StatelessWidget {
       child: MaterialApp.router(
         title: 'Notes',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData.dark().copyWith(
+        theme: themeData.copyWith(
+            textTheme: const TextTheme(
+                bodyText2: TextStyle(
+                    fontFamily: 'Sans Serrif', color: Colors.black54)),
             primaryColorDark: Colors.teal,
             primaryColor: Colors.teal,
             appBarTheme: const AppBarTheme(
               backgroundColor: Colors.teal,
             ),
+            checkboxTheme: CheckboxThemeData(
+                fillColor:
+                    MaterialStateColor.resolveWith((states) => Colors.teal)),
             floatingActionButtonTheme: FloatingActionButtonThemeData(
                 backgroundColor: Colors.teal.shade500),
             inputDecorationTheme: InputDecorationTheme(
